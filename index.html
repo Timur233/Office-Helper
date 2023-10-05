@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="test.js"></script>
+<script>
+    function saveFileToDisk(buffer, fileName) {
+        const blob = new Blob([buffer]); 
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        
+        a.style.display = 'none';
+        a.href = url;
+        a.download = fileName;
+
+        document.body.appendChild(a);
+        a.click();
+
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    }
+
+    fetch('https://cms.abpx.kz/storage/uploads/2023/08/30/64ef82c56413ddocument.calculations.xlsx')
+        .then(res => res.arrayBuffer())
+        .then(res => {
+            fillExcelDocument({ organization: 'test' }, res)
+                .then(res => {
+                    saveFileToDisk(res, 'test.xlsx');
+                })
+        })
+</script>
+</html>

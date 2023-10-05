@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bufferjs": "^1.0.0",
     "exceljs": "^4.3.0",
-    "libreoffice-convert": "^1.4.1"
+    "FileReader": "^0.10.2",
+    "libreoffice-convert": "^1.4.1",
+    "mammoth": "^1.6.0"
   }
 }
